@@ -1,6 +1,7 @@
 from PyPDF2 import PdfReader, PdfWriter
 from pathlib import Path
-
+# The user gives the directory of a PDF file and then is prompted to give the range of pages (one indexed) to crop.
+# The user then chooses what to name the PDF, and is outputted in a folder where the script is.
 def pdfCropper(directory):
     file_directory = Path(directory) # Creates path to desired pdf
     output_directory = Path("outputs") # Output path in the folder of this script is created.
@@ -14,7 +15,7 @@ def pdfCropper(directory):
         cropped_pdf = PdfWriter()
         print(f"The given PDF has {len(input_pdf.pages)} total pages.")
 
-        starting_point = int(input("Please put in the index you want to begin the cropping atL\n"))
+        starting_point = int(input("Please put in the index you want to begin the cropping at:\n"))
         ending_point = int(input("Please put in the index you want to end the cropping at:\n"))
 
         for page in input_pdf.pages[starting_point-1:ending_point]: # starting_point is decreased by one to account for that page to begin at.
